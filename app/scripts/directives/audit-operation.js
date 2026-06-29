@@ -1,24 +1,24 @@
-export function auditOperation () {
+export function auditOperation() {
   return {
-    restrict: 'E',
-    templateUrl: 'views/partials/audit-operation.html',
+    restrict: "E",
+    templateUrl: "views/partials/audit-operation.html",
     scope: {
-      audit: '=audit'
+      audit: "=audit",
     },
     link: (scope, element, attrs) => {
-      scope.expanded = false
+      scope.expanded = false;
 
       scope.toggleExpanded = () => {
-        scope.expanded = !scope.expanded
-      }
+        scope.expanded = !scope.expanded;
+      };
 
-      scope.isObject = maybeObject => {
+      scope.isObject = (maybeObject) => {
         return (
-          typeof maybeObject !== 'string' &&
-          typeof maybeObject !== 'boolean' &&
-          typeof maybeObject !== 'number'
-        )
-      }
-    }
-  }
+          typeof maybeObject !== "string" &&
+          typeof maybeObject !== "boolean" &&
+          typeof maybeObject !== "number"
+        );
+      };
+    },
+  };
 }

@@ -8,18 +8,4 @@ export function SidebarCtrl ($scope, $location) {
       return false
     }
   }
-
-  $(window).scroll(function (e) {
-    // Get the position of the location where the scroller starts.
-    const scrollerAnchor = $('.scollNavAnchor').offsetParent().scrollTop()
-    if (scrollerAnchor >= 50) {
-      // show the scroll to button
-      $('#scrollToTop').css('display', 'block')
-      $('.header').css('box-shadow', '0px 0px 10px #888')
-    } else {
-      // hide the scroll to button
-      $('#scrollToTop').css('display', 'none')
-      $('.header').css('box-shadow', 'none')
-    }
-  })
 }

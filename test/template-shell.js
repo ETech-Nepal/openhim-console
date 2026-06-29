@@ -1,0 +1,21 @@
+const assert = require('assert')
+const fs = require('fs')
+
+const template = fs.readFileSync('app/template.html', 'utf8')
+const styles = fs.readFileSync('app/styles/main.css', 'utf8')
+const sidebarController = fs.readFileSync('app/scripts/controllers/sidebar.js', 'utf8')
+const config = fs.readFileSync('app/config/default.json', 'utf8')
+const environmentConfig = fs.readFileSync('app/config/default-env.json', 'utf8')
+
+assert.match(template, /class="brand-wordmark"/)
+assert.match(template, /class="console-title"/)
+assert.match(template, /class="header-actions"/)
+assert.match(template, /rel="icon" href="favicon\.ico"/)
+assert.match(styles, /\.header \.titleDiv\s*{[^}]*position:\s*absolute/)
+const logo = template.match(/<div class="logo">([\s\S]*?)<\/div>/)[1]
+assert.match(logo, /href="#!\/"/)
+assert.doesNotMatch(logo, /href="#!\/transactions"/)
+assert.match(styles, /\.app-shell\s*\{[\s\S]*display:\s*flex/)
+assert.doesNotMatch(styles, /#body\s*\{[\s\S]*z-index:\s*-9999/)
+assert.doesNotMatch(sidebarController, /\$\(window\)\.scroll/)
+assert.doesNotMatch(template + config + environmentConfig, /mediisha|medisha/i)

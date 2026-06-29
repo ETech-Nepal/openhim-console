@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{appTitle}}</title>
+  <link rel="icon" href="favicon.ico">
   <style>
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {display: none !important;}
   </style>
@@ -18,7 +19,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-  <div id="container">
+  <div id="container" class="app-shell">
     <div id="header">
 
       <!-- Header -->
@@ -29,15 +30,21 @@
               <!-- Logo -->
               <div class="logo">
                 <h1>
-                  <a href="#!/transactions">
-                    <span class="logo-image"></span>
-                    <span class="logo-title">{{appTitle}}</span>
+                  <a href="#!/" aria-label="Government of Nepal Admin Console dashboard">
+                    <span class="logo-image" role="img" aria-label="Emblem of Nepal"></span>
+                    <span class="brand-wordmark" aria-label="Government of Nepal, Ministry of Health and Food Hygiene, Singha Durbar, Kathmandu">
+                      <span>नेपाल सरकार</span>
+                      <strong>स्वास्थ्य तथा खाद्य स्वच्छता मन्त्रालय</strong>
+                      <small>सिंहदरबार, काठमाडौं</small>
+                    </span>
                   </a>
                 </h1>
               </div>
             </div>
 
-            <div ng-show="navMenuVisible === true">
+            <div class="console-title">{{appTitle}}</div>
+
+            <div class="header-actions" ng-show="navMenuVisible === true">
               <div class="float-right">
                 <div class="navbar navbar-inverse float-right" role=" banner">
                   <nav class="navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -62,7 +69,7 @@
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Menu<b class="caret"></b></a>
                         <ul class="dropdown-menu animated fadeInUp">
-                          <li ng-class="{current: isCurrent('/')}"><a href="#"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                          <li ng-class="{current: isCurrent('/')}"><a href="#!/"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
                           <li ng-class="{current: isCurrent('/transactions')}"><a href="#!/transactions"><i class="glyphicon glyphicon-list-alt"></i> Transaction log</a></li>
                           <li ng-if="userGroupAdmin" ng-class="{current: isCurrent('/audits')}"><a href="#!/audits"><i class="glyphicon glyphicon-book"></i> Audit log</a></li>
                           <li ng-if="userGroupAdmin" ng-class="{current: isCurrent('/clients')}"><a href="#!/clients"><i class="glyphicon glyphicon-th"></i> Clients</a></li>
@@ -88,8 +95,7 @@
       </div>
     </div>
 
-    <!-- Add your site or application content here -->
-    <div id="body" ng-view=""></div>
+    <main id="body" ng-view=""></main>
 
     <footer>
       <div class="container">
@@ -97,10 +103,10 @@
           {{appFooterTitle}}<br /> Copyright&nbsp;&copy;&nbsp;
           <script>
             document.write(new Date().getFullYear());
-          </script>&nbsp;<a href='http://jembi.org'>Jembi Health Systems NPC</a><br />
+          </script>&nbsp;Government of Nepal<br />
           <div>
             <span ng-bind-html="appFooterPoweredBy"></span>
-            <a href="#/about" footer-version></a>
+            <a href="#!/about" footer-version></a>
           </div>
         </div>
       </div>
