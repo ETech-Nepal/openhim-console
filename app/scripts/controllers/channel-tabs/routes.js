@@ -115,6 +115,7 @@ export function channelRoutesCtrl ($scope, $timeout, Api, Alerting) {
         type: 'http',
         status: 'enabled',
         forwardAuthHeader: false,
+        forwardRoleHeader: false,
         kafkaClientId: '',
         kafkaTopic: '',
         waitPrimaryResponse: false,
@@ -149,6 +150,7 @@ export function channelRoutesCtrl ($scope, $timeout, Api, Alerting) {
     let password = ''
     let routeType = 'http'
     let forwardAuthHeader = false
+    let forwardRoleHeader = false
 
     if ($scope.selected.mediatorRoute.endpoint.name) { name = $scope.selected.mediatorRoute.endpoint.name }
     if ($scope.selected.mediatorRoute.endpoint.secured) { secured = $scope.selected.mediatorRoute.endpoint.secured }
@@ -160,6 +162,7 @@ export function channelRoutesCtrl ($scope, $timeout, Api, Alerting) {
     if ($scope.selected.mediatorRoute.endpoint.password) { password = $scope.selected.mediatorRoute.endpoint.password }
     if ($scope.selected.mediatorRoute.endpoint.type) { routeType = $scope.selected.mediatorRoute.endpoint.type }
     if ($scope.selected.mediatorRoute.endpoint.forwardAuthHeader) { forwardAuthHeader = $scope.selected.mediatorRoute.endpoint.forwardAuthHeader }
+    if ($scope.selected.mediatorRoute.endpoint.forwardRoleHeader) { forwardRoleHeader = $scope.selected.mediatorRoute.endpoint.forwardRoleHeader }
 
     // if no routes exist yet then make mediator primary
     if ($scope.channel.routes.length === 0) {
@@ -179,7 +182,8 @@ export function channelRoutesCtrl ($scope, $timeout, Api, Alerting) {
       password,
       type: routeType,
       status: 'enabled',
-      forwardAuthHeader
+      forwardAuthHeader,
+      forwardRoleHeader
     })
   }
 
