@@ -1,5 +1,5 @@
 # Build Production Console in Node
-FROM node:18-alpine  AS build
+FROM node:20-alpine AS build
 
 RUN apk add git
 
