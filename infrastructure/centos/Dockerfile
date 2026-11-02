@@ -10,5 +10,5 @@ RUN yum install -y gcc gcc-c++ \
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 RUN source ~/.bashrc
-RUN nvm install --lts
+RUN nvm install 24
 RUN npm --version && node -v
